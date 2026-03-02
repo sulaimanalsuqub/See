@@ -20,6 +20,11 @@ let followerX = 0, followerY = 0;
 document.addEventListener('mousemove', (e) => {
   mouseX = e.clientX;
   mouseY = e.clientY;
+
+  // Show cursors on first move
+  cursor.classList.add('cursor--visible');
+  cursorFollower.classList.add('cursor--visible');
+
   gsap.to(cursor, { x: mouseX, y: mouseY, duration: 0.05, ease: 'none' });
 
   // Orb parallax (merged to avoid double listener)

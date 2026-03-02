@@ -62,26 +62,31 @@ button { cursor: none; border: none; background: none; font-family: var(--font);
 /* ---------- CURSOR ---------- */
 .cursor {
   position: fixed;
-  width: 8px; height: 8px;
+  width: 10px; height: 10px;
   background: var(--white);
   border-radius: 50%;
   pointer-events: none;
   z-index: 10000;
   transform: translate(-50%, -50%);
   transition: width 0.2s, height 0.2s, background 0.2s;
+  box-shadow: 0 0 8px 2px rgba(255,255,255,0.6);
+  opacity: 0;
 }
 .cursor-follower {
   position: fixed;
   width: 36px; height: 36px;
-  border: 1.5px solid var(--blue-main);
+  border: 1.5px solid rgba(255,255,255,0.5);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
   transition: width 0.3s var(--transition), height 0.3s var(--transition);
+  opacity: 0;
 }
-.cursor.cursor--hover { width: 16px; height: 16px; background: var(--blue-main); }
-.cursor-follower.cursor--hover { width: 60px; height: 60px; border-color: var(--blue-bright); opacity: 0.5; }
+.cursor.cursor--visible { opacity: 1; }
+.cursor-follower.cursor--visible { opacity: 1; }
+.cursor.cursor--hover { width: 18px; height: 18px; background: var(--blue-main); box-shadow: 0 0 12px 4px rgba(38,0,255,0.6); }
+.cursor-follower.cursor--hover { width: 56px; height: 56px; border-color: var(--blue-bright); border-width: 1.5px; }
 
 /* ---------- LOADER ---------- */
 .loader {
