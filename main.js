@@ -14,8 +14,12 @@ CustomEase.create("seeIn", "M0,0 C0.55,0 1,0.45 1,1");
 const cursor = document.getElementById('cursor');
 const cursorFollower = document.getElementById('cursor-follower');
 
-let mouseX = 0, mouseY = 0;
-let followerX = 0, followerY = 0;
+let mouseX = -200, mouseY = -200;
+let followerX = -200, followerY = -200;
+
+// Start both cursors off-screen so they don't flash at (0,0)
+gsap.set(cursor, { x: -200, y: -200 });
+gsap.set(cursorFollower, { x: -200, y: -200 });
 
 document.addEventListener('mousemove', (e) => {
   mouseX = e.clientX;
@@ -184,7 +188,7 @@ function initHeroAnimation() {
       { y: 0, opacity: 1, duration: 0.6 },
       '-=0.3'
     )
-    .fromTo('[data-hero="scroll"]',
+    .fromTo('.hero-scroll-indicator',
       { opacity: 0 },
       { opacity: 1, duration: 0.6 },
       '-=0.2'
