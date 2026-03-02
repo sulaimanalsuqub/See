@@ -171,7 +171,7 @@ button { cursor: none; border: none; background: none; font-family: var(--font);
 .section-title {
   font-size: clamp(32px, 4vw, 52px);
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1.25;
   margin-bottom: 20px;
 }
 .section-desc {
@@ -222,10 +222,10 @@ button { cursor: none; border: none; background: none; font-family: var(--font);
   background: var(--blue-main);
   transform: scaleX(0);
   transition: transform 0.3s var(--transition);
-  transform-origin: right;
+  transform-origin: left;
 }
 .nav-link:hover { color: var(--white); }
-.nav-link:hover::after { transform: scaleX(1); transform-origin: left; }
+.nav-link:hover::after { transform: scaleX(1); transform-origin: right; }
 
 .header-cta {
   padding: 10px 22px;
@@ -354,9 +354,9 @@ button { cursor: none; border: none; background: none; font-family: var(--font);
 .hero-title {
   font-size: clamp(48px, 7vw, 96px);
   font-weight: 900;
-  line-height: 1.05;
+  line-height: 1.15;
   margin-bottom: 28px;
-  letter-spacing: -2px;
+  letter-spacing: -1px;
 }
 .hero-line { display: block; overflow: hidden; }
 .hero-line--accent {
@@ -518,7 +518,7 @@ button { cursor: none; border: none; background: none; font-family: var(--font);
 }
 .service-arrow {
   position: absolute;
-  bottom: 32px; left: 32px;
+  bottom: 32px; right: 32px;
   width: 40px; height: 40px;
   background: var(--blue-subtle);
   border: 1px solid rgba(38,0,255,0.2);
@@ -528,7 +528,7 @@ button { cursor: none; border: none; background: none; font-family: var(--font);
   justify-content: center;
   color: var(--blue-bright);
   opacity: 0;
-  transform: translateX(10px);
+  transform: translateX(-10px);
   transition: opacity 0.3s, transform 0.3s var(--transition-spring);
 }
 .service-card:hover .service-arrow { opacity: 1; transform: translateX(0); }
@@ -554,10 +554,10 @@ button { cursor: none; border: none; background: none; font-family: var(--font);
 }
 .bento-grid {
   display: grid;
-  grid-template-columns: 320px 480px 280px 320px;
+  grid-template-columns: 300px 460px 260px 300px 300px;
   grid-template-rows: 260px 340px;
   gap: 20px;
-  padding: 0 40px;
+  padding: 0 80px;
   will-change: transform;
   width: max-content;
 }
@@ -589,7 +589,7 @@ button { cursor: none; border: none; background: none; font-family: var(--font);
   background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
   transform: translateY(10px);
   opacity: 0;
-  transition: opacity 0.4s, transform 0.4s var(--transition));
+  transition: opacity 0.4s, transform 0.4s var(--transition);
 }
 .bento-item:hover .bento-info { opacity: 1; transform: translateY(0); }
 .bento-cat {
@@ -616,7 +616,7 @@ button { cursor: none; border: none; background: none; font-family: var(--font);
 }
 .process-line-track {
   position: absolute;
-  right: 27px;
+  left: 27px;
   top: 24px;
   bottom: 24px;
   width: 2px;
@@ -635,7 +635,7 @@ button { cursor: none; border: none; background: none; font-family: var(--font);
   flex-direction: column;
   gap: 0;
   flex: 1;
-  padding-right: 80px;
+  padding-left: 80px;
 }
 .process-step {
   display: grid;
@@ -691,13 +691,15 @@ button { cursor: none; border: none; background: none; font-family: var(--font);
 .step-list li {
   font-size: 14px;
   color: var(--white-50);
-  padding-right: 20px;
+  padding-right: 24px;
   position: relative;
+  line-height: 1.6;
 }
 .step-list li::before {
   content: '—';
   position: absolute;
   right: 0;
+  top: 0;
   color: var(--blue-bright);
   font-weight: 700;
 }
@@ -794,9 +796,9 @@ button { cursor: none; border: none; background: none; font-family: var(--font);
 .footer-cta-title {
   font-size: clamp(40px, 6vw, 80px);
   font-weight: 900;
-  line-height: 1.1;
+  line-height: 1.15;
   margin-bottom: 48px;
-  letter-spacing: -2px;
+  letter-spacing: -1.5px;
 }
 .footer-cta-title em {
   font-style: normal;
@@ -863,7 +865,7 @@ button { cursor: none; border: none; background: none; font-family: var(--font);
   .service-card--wide { grid-column: span 2; }
   .process-timeline { flex-direction: column; }
   .process-line-track { display: none; }
-  .process-steps { padding-right: 0; }
+  .process-steps { padding-left: 0; }
   .footer-bottom { grid-template-columns: 1fr 1fr; }
 }
 
@@ -873,18 +875,23 @@ button { cursor: none; border: none; background: none; font-family: var(--font);
   .burger { display: flex; }
   .mobile-menu { display: flex; }
   .hero { padding: 120px 20px 80px; }
-  .hero-stats { gap: 24px; flex-wrap: wrap; }
+  .hero-stats { gap: 20px; flex-wrap: wrap; justify-content: center; }
   .stat-divider { display: none; }
   .services-grid { grid-template-columns: 1fr; }
   .service-card--large, .service-card--wide { grid-column: span 1; }
+  /* Bento على موبايل: تمرير أفقي بأعمدة مناسبة */
   .bento-grid {
-    grid-template-columns: 280px 280px 280px;
-    grid-template-rows: 220px 280px;
+    grid-template-columns: 260px 260px 260px 260px 260px;
+    grid-template-rows: 200px 260px;
+    padding: 0 20px;
   }
-  .bento-item--tall { grid-row: span 1; height: 220px; }
+  .bento-item--tall { grid-row: span 2; }
+  .bento-scroll-wrapper { height: 350vh; }
   .footer-bottom { grid-template-columns: 1fr; text-align: center; }
   .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
   .footer-social { justify-content: center; }
   .footer-logo { margin: 0 auto; }
   .section-header { margin-bottom: 48px; }
+  .hero-title { letter-spacing: -0.5px; }
+  .footer-cta-title { letter-spacing: -1px; }
 }

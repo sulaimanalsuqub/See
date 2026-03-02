@@ -21,6 +21,12 @@ document.addEventListener('mousemove', (e) => {
   mouseX = e.clientX;
   mouseY = e.clientY;
   gsap.to(cursor, { x: mouseX, y: mouseY, duration: 0.05, ease: 'none' });
+
+  // Orb parallax (merged to avoid double listener)
+  const rx = (e.clientX / window.innerWidth - 0.5) * 30;
+  const ry = (e.clientY / window.innerHeight - 0.5) * 30;
+  gsap.to('.orb-1', { x: rx * 1.5, y: ry * 1.5, duration: 1.5, ease: 'seeEase', overwrite: 'auto' });
+  gsap.to('.orb-3', { x: -rx, y: -ry, duration: 2, ease: 'seeEase', overwrite: 'auto' });
 });
 
 function animateFollower() {
@@ -262,32 +268,32 @@ gsap.fromTo('[data-service="card"]',
    ============================================ */
 const bentoGrid = document.getElementById('bentoGrid');
 
-// Initial state: scale and blur in from sides
-gsap.set('.bento-item', { scale: 0.85, opacity: 0 });
-gsap.set(bentoGrid, { xPercent: 20 });
+// Initial state
+gsap.set('.bento-item', { scale: 0.88, opacity: 0 });
+gsap.set(bentoGrid, { x: 120 });
 
 const bentTl = gsap.timeline({
   scrollTrigger: {
     trigger: '#bentoWrapper',
     start: 'top top',
     end: 'bottom bottom',
-    scrub: 1.2,
-    pin: false,
+    scrub: 1.5,
+    pin: '.bento-track',
   }
 });
 
 bentTl
   .to(bentoGrid, {
-    xPercent: -20,
+    x: () => -(bentoGrid.scrollWidth - window.innerWidth + 160),
     ease: 'none',
     duration: 1
   })
   .to('.bento-item', {
     scale: 1,
     opacity: 1,
-    stagger: { amount: 0.6, from: 'start' },
+    stagger: { amount: 0.8, from: 'start' },
     ease: 'seeEase',
-    duration: 0.5
+    duration: 0.6
   }, 0);
 
 /* ============================================
@@ -329,25 +335,33 @@ processSteps.forEach((step, i) => {
    CLIENTS MARQUEE — GSAP Infinite Loop
    ============================================ */
 const logosTrack = document.getElementById('logosTrack');
-const trackWidth = logosTrack.scrollWidth / 2;
 
-gsap.to(logosTrack, {
-  x: `-=${trackWidth}`,
-  duration: 25,
-  ease: 'none',
-  repeat: -1,
-  modifiers: {
-    x: gsap.utils.unitize(x => parseFloat(x) % trackWidth)
-  }
-});
+// Wait for layout then calculate
+ScrollTrigger.addEventListener('refresh', setupMarquee);
+setupMarquee();
 
-// Pause on hover
+let marqueeTween;
+function setupMarquee() {
+  if (marqueeTween) marqueeTween.kill();
+  const trackWidth = logosTrack.scrollWidth / 2;
+  marqueeTween = gsap.to(logosTrack, {
+    x: `-=${trackWidth}`,
+    duration: 28,
+    ease: 'none',
+    repeat: -1,
+    modifiers: {
+      x: gsap.utils.unitize(x => parseFloat(x) % trackWidth)
+    }
+  });
+}
+
+// Pause on hover - only affect marquee tween
 const marqueeWrapper = document.getElementById('logosMarquee');
 marqueeWrapper.addEventListener('mouseenter', () => {
-  gsap.globalTimeline.timeScale(0.3);
+  gsap.to(marqueeTween, { timeScale: 0.15, duration: 0.5 });
 });
 marqueeWrapper.addEventListener('mouseleave', () => {
-  gsap.to(gsap.globalTimeline, { timeScale: 1, duration: 0.5 });
+  gsap.to(marqueeTween, { timeScale: 1, duration: 0.5 });
 });
 
 /* ============================================
@@ -369,15 +383,8 @@ gsap.fromTo('[data-footer="bottom"]',
 );
 
 /* ============================================
-   HERO ORB — Mouse Parallax
+   HERO ORB — Mouse Parallax (merged into main mousemove above)
    ============================================ */
-document.addEventListener('mousemove', (e) => {
-  const rx = (e.clientX / window.innerWidth - 0.5) * 30;
-  const ry = (e.clientY / window.innerHeight - 0.5) * 30;
-
-  gsap.to('.orb-1', { x: rx * 1.5, y: ry * 1.5, duration: 1.5, ease: 'seeEase' });
-  gsap.to('.orb-3', { x: -rx, y: -ry, duration: 2, ease: 'seeEase' });
-});
 
 /* ============================================
    SMOOTH ANCHOR SCROLLING
