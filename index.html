@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEE — خدمات إعلانية إبداعية</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ======== CURSOR ======== -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursor-follower"></div>
+
+  <!-- ======== LOADER ======== -->
+  <div class="loader" id="loader">
+    <div class="loader-logo">
+      <img src="assets/see-logo.svg" alt="SEE" />
+    </div>
+    <div class="loader-bar"><div class="loader-bar-fill" id="loaderFill"></div></div>
+  </div>
+
+  <!-- ======== HEADER ======== -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="#" class="header-logo">
+        <img src="assets/see-logo.svg" alt="SEE" />
+      </a>
+      <nav class="header-nav">
+        <a href="#services" class="nav-link">الخدمات</a>
+        <a href="#work" class="nav-link">أعمالنا</a>
+        <a href="#process" class="nav-link">كيف نعمل</a>
+        <a href="#clients" class="nav-link">عملاؤنا</a>
+      </nav>
+      <a href="#footer" class="header-cta">تواصل معنا</a>
+      <button class="burger" id="burger" aria-label="القائمة">
+        <span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#services" class="mobile-link">الخدمات</a>
+      <a href="#work" class="mobile-link">أعمالنا</a>
+      <a href="#process" class="mobile-link">كيف نعمل</a>
+      <a href="#clients" class="mobile-link">عملاؤنا</a>
+      <a href="#footer" class="mobile-link mobile-cta">تواصل معنا</a>
+    </div>
+  </header>
+
+  <!-- ======== HERO ======== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-orb orb-1"></div>
+      <div class="hero-orb orb-2"></div>
+      <div class="hero-orb orb-3"></div>
+      <div class="hero-grid"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge" data-hero="badge">
+        <span class="badge-dot"></span>
+        <span>وكالة إعلانية إبداعية</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="hero-line" data-hero="line">نصنع</span>
+        <span class="hero-line hero-line--accent" data-hero="line">
+          <span class="word-reveal">تجارب</span>
+          <span class="word-reveal">بصرية</span>
+        </span>
+        <span class="hero-line" data-hero="line">لا تُنسى</span>
+      </h1>
+      <p class="hero-sub" data-hero="sub">
+        نُعيد تعريف حضورك الإعلاني من خلال تصميم استراتيجي وتسويق هادف يجعل علامتك تُرى.
+      </p>
+      <div class="hero-actions" data-hero="actions">
+        <a href="#work" class="btn btn-primary">
+          <span>استعرض أعمالنا</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#footer" class="btn btn-ghost">ابدأ مشروعك</a>
+      </div>
+      <div class="hero-stats" data-hero="stats">
+        <div class="stat">
+          <span class="stat-num" data-count="120">0</span><span class="stat-plus">+</span>
+          <span class="stat-label">مشروع منجز</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-count="50">0</span><span class="stat-plus">+</span>
+          <span class="stat-label">عميل راضٍ</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-count="5">0</span><span class="stat-plus">+</span>
+          <span class="stat-label">سنوات خبرة</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator" data-hero="scroll">
+      <div class="scroll-line"></div>
+      <span>مرر للأسفل</span>
+    </div>
+  </section>
+
+  <!-- ======== SERVICES ======== -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header" data-section="header">
+        <span class="section-tag">ما نقدمه</span>
+        <h2 class="section-title">خدماتنا الإبداعية</h2>
+        <p class="section-desc">نقدم حلولاً إعلانية متكاملة تجمع بين الإبداع والاستراتيجية لتحقيق نتائج حقيقية.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card service-card--large" data-service="card">
+          <div class="service-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="4" y="4" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="22" y="4" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="4" y="22" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="29" cy="29" r="7" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <h3>تصميم الهوية البصرية</h3>
+          <p>نبني هويات بصرية متكاملة تعكس جوهر علامتك التجارية وتترك أثراً لا يُمحى في ذهن جمهورك.</p>
+          <div class="service-tags">
+            <span>شعارات</span><span>ألوان</span><span>خطوط</span><span>دليل الهوية</span>
+          </div>
+          <div class="service-arrow">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="service-card" data-service="card">
+          <div class="service-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M8 28L16 18l6 8 5-6 7 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="4" y="6" width="32" height="28" rx="3" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <h3>التسويق الرقمي</h3>
+          <p>استراتيجيات تسويقية مدروسة تُوصل رسالتك للجمهور الصحيح في الوقت المناسب.</p>
+          <div class="service-arrow">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="service-card" data-service="card">
+          <div class="service-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="16" stroke="currentColor" stroke-width="1.5"/><path d="M14 20l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>إدارة السوشيال ميديا</h3>
+          <p>محتوى إبداعي ومنتظم يبني مجتمعاً حول علامتك ويحوّل المتابعين إلى عملاء.</p>
+          <div class="service-arrow">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="service-card service-card--wide" data-service="card">
+          <div class="service-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="4" y="8" width="32" height="24" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M14 20h12M20 14v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3>تصميم المطبوعات</h3>
+          <p>من البروشور إلى اللافتات الضخمة، نصمم مواد مطبوعة تلفت الأنظار وتُقنع.</p>
+          <div class="service-arrow">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="service-card service-card--wide" data-service="card">
+          <div class="service-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M8 32V16l12-8 12 8v16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="15" y="22" width="10" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <h3>تصميم المواقع والتطبيقات</h3>
+          <p>واجهات رقمية جميلة وعملية تقدم تجربة مستخدم استثنائية تعكس احترافية علامتك.</p>
+          <div class="service-arrow">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== WORK / BENTO GALLERY ======== -->
+  <section class="work" id="work">
+    <div class="container">
+      <div class="section-header" data-section="header">
+        <span class="section-tag">معرض الأعمال</span>
+        <h2 class="section-title">أعمالنا تتحدث</h2>
+        <p class="section-desc">مختارات من مشاريعنا التي نفخر بها — حيث تلتقي الرؤية بالتنفيذ.</p>
+      </div>
+    </div>
+    <div class="bento-scroll-wrapper" id="bentoWrapper">
+      <div class="bento-track" id="bentoTrack">
+        <div class="bento-grid" id="bentoGrid">
+
+          <div class="bento-item bento-item--tall" data-bento="item">
+            <div class="bento-img" style="background: linear-gradient(135deg, #1a0533 0%, #3d00b3 100%);">
+              <div class="bento-placeholder">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="20" stroke="rgba(255,255,255,0.3)" stroke-width="2"/><path d="M22 30l6 6 10-12" stroke="rgba(255,255,255,0.6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+            <div class="bento-info">
+              <span class="bento-cat">هوية بصرية</span>
+              <h3>مشروع الفجر</h3>
+            </div>
+          </div>
+
+          <div class="bento-item bento-item--wide" data-bento="item">
+            <div class="bento-img" style="background: linear-gradient(135deg, #0a0a2e 0%, #2600FF 100%);">
+              <div class="bento-placeholder">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="none"><rect x="10" y="20" width="40" height="28" rx="3" stroke="rgba(255,255,255,0.3)" stroke-width="2"/><path d="M20 30h20M20 38h12" stroke="rgba(255,255,255,0.6)" stroke-width="2" stroke-linecap="round"/></svg>
+              </div>
+            </div>
+            <div class="bento-info">
+              <span class="bento-cat">تسويق رقمي</span>
+              <h3>حملة نبض</h3>
+            </div>
+          </div>
+
+          <div class="bento-item" data-bento="item">
+            <div class="bento-img" style="background: linear-gradient(135deg, #160030 0%, #4a00e0 100%);">
+              <div class="bento-placeholder">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="none"><polygon points="30,10 50,45 10,45" stroke="rgba(255,255,255,0.3)" stroke-width="2" fill="none"/></svg>
+              </div>
+            </div>
+            <div class="bento-info">
+              <span class="bento-cat">سوشيال ميديا</span>
+              <h3>بيك فود</h3>
+            </div>
+          </div>
+
+          <div class="bento-item bento-item--tall" data-bento="item">
+            <div class="bento-img" style="background: linear-gradient(135deg, #0d001a 0%, #6600cc 100%);">
+              <div class="bento-placeholder">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="25" r="10" stroke="rgba(255,255,255,0.3)" stroke-width="2"/><path d="M15 50c0-8.3 6.7-15 15-15s15 6.7 15 15" stroke="rgba(255,255,255,0.6)" stroke-width="2" stroke-linecap="round"/></svg>
+              </div>
+            </div>
+            <div class="bento-info">
+              <span class="bento-cat">هوية بصرية</span>
+              <h3>مشروع ليث</h3>
+            </div>
+          </div>
+
+          <div class="bento-item bento-item--wide" data-bento="item">
+            <div class="bento-img" style="background: linear-gradient(135deg, #050520 0%, #3300aa 100%);">
+              <div class="bento-placeholder">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="none"><rect x="8" y="8" width="44" height="44" rx="6" stroke="rgba(255,255,255,0.3)" stroke-width="2"/><path d="M20 30l8 8 12-16" stroke="rgba(255,255,255,0.6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+            <div class="bento-info">
+              <span class="bento-cat">تصميم مواقع</span>
+              <h3>منصة سيل</h3>
+            </div>
+          </div>
+
+          <div class="bento-item" data-bento="item">
+            <div class="bento-img" style="background: linear-gradient(135deg, #12002a 0%, #5500bb 100%);">
+              <div class="bento-placeholder">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="none"><path d="M10 50L25 20l10 15 8-10 7 25" stroke="rgba(255,255,255,0.6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+            <div class="bento-info">
+              <span class="bento-cat">مطبوعات</span>
+              <h3>بروشور أوريكس</h3>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== PROCESS ======== -->
+  <section class="process" id="process">
+    <div class="container">
+      <div class="section-header" data-section="header">
+        <span class="section-tag">طريقة عملنا</span>
+        <h2 class="section-title">مراحل العمل</h2>
+        <p class="section-desc">منهجية واضحة تضمن لك نتائج استثنائية في كل مشروع.</p>
+      </div>
+      <div class="process-timeline">
+        <div class="process-line-track">
+          <div class="process-line-fill" id="processLineFill"></div>
+        </div>
+        <div class="process-steps">
+
+          <div class="process-step" data-process="step">
+            <div class="step-number">
+              <span>01</span>
+            </div>
+            <div class="step-content">
+              <h3>الاستكشاف والفهم</h3>
+              <p>نغوص في عمق مشروعك، نفهم جمهورك وأهدافك وتحدياتك قبل أن نرسم أي خط.</p>
+              <ul class="step-list">
+                <li>جلسات إحاطة معمّقة</li>
+                <li>تحليل المنافسين</li>
+                <li>تحديد الجمهور المستهدف</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="process-step" data-process="step">
+            <div class="step-number">
+              <span>02</span>
+            </div>
+            <div class="step-content">
+              <h3>الاستراتيجية والتخطيط</h3>
+              <p>نضع خارطة طريق إبداعية واضحة تربط رؤيتك بأهداف قابلة للقياس.</p>
+              <ul class="step-list">
+                <li>بناء الاستراتيجية الإبداعية</li>
+                <li>تحديد المحاور البصرية</li>
+                <li>جدول زمني واضح</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="process-step" data-process="step">
+            <div class="step-number">
+              <span>03</span>
+            </div>
+            <div class="step-content">
+              <h3>التصميم والإنتاج</h3>
+              <p>ننفذ الرؤية بأعلى معايير الجودة مع التواصل المستمر لضمان التوافق الكامل.</p>
+              <ul class="step-list">
+                <li>تصاميم أولية متعددة</li>
+                <li>مراجعة ومراجعة</li>
+                <li>إنتاج المواد النهائية</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="process-step" data-process="step">
+            <div class="step-number">
+              <span>04</span>
+            </div>
+            <div class="step-content">
+              <h3>التسليم والدعم</h3>
+              <p>نسلمك مشروعك كاملاً مع الدعم الكامل لضمان نجاح إطلاقه وما بعده.</p>
+              <ul class="step-list">
+                <li>تسليم جميع الملفات</li>
+                <li>دليل الاستخدام</li>
+                <li>دعم ما بعد التسليم</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== CLIENTS LOGOS ======== -->
+  <section class="clients" id="clients">
+    <div class="container">
+      <div class="section-header" data-section="header">
+        <span class="section-tag">عملاؤنا</span>
+        <h2 class="section-title">شركاء النجاح</h2>
+        <p class="section-desc">نفخر بثقة هؤلاء في تجسيد رؤيتهم معنا.</p>
+      </div>
+    </div>
+    <div class="logos-marquee-wrapper">
+      <div class="logos-marquee" id="logosMarquee">
+        <div class="logos-track" id="logosTrack">
+          <div class="logo-item"><span>شركة الرياض</span></div>
+          <div class="logo-item"><span>نبض ميديا</span></div>
+          <div class="logo-item"><span>مجموعة أوريكس</span></div>
+          <div class="logo-item"><span>بيك فود</span></div>
+          <div class="logo-item"><span>استوديو فجر</span></div>
+          <div class="logo-item"><span>تك فيجن</span></div>
+          <div class="logo-item"><span>براند لاب</span></div>
+          <div class="logo-item"><span>نوفا كريتف</span></div>
+          <!-- Duplicate for infinite scroll -->
+          <div class="logo-item"><span>شركة الرياض</span></div>
+          <div class="logo-item"><span>نبض ميديا</span></div>
+          <div class="logo-item"><span>مجموعة أوريكس</span></div>
+          <div class="logo-item"><span>بيك فود</span></div>
+          <div class="logo-item"><span>استوديو فجر</span></div>
+          <div class="logo-item"><span>تك فيجن</span></div>
+          <div class="logo-item"><span>براند لاب</span></div>
+          <div class="logo-item"><span>نوفا كريتف</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="footer" id="footer">
+    <div class="footer-bg">
+      <div class="footer-orb"></div>
+    </div>
+    <div class="container">
+      <div class="footer-cta" data-footer="cta">
+        <span class="footer-cta-tag">جاهز للبدء؟</span>
+        <h2 class="footer-cta-title">لنبني شيئاً<br/><em>مذهلاً</em> معاً</h2>
+        <a href="mailto:hello@see.sa" class="btn btn-primary btn-large">
+          <span>ابدأ مشروعك الآن</span>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 10h14M13 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="footer-bottom" data-footer="bottom">
+        <div class="footer-logo">
+          <img src="assets/see-logo.svg" alt="SEE" />
+        </div>
+        <div class="footer-links">
+          <a href="#services">الخدمات</a>
+          <a href="#work">أعمالنا</a>
+          <a href="#process">كيف نعمل</a>
+          <a href="mailto:hello@see.sa">تواصل معنا</a>
+        </div>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram" class="social-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          </a>
+          <a href="#" aria-label="Twitter" class="social-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 4l16 16M4 20L20 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn" class="social-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M7 17V10M7 7v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11 17v-4c0-1.5 1-3 3-3s3 1.5 3 3v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11 10v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </a>
+        </div>
+        <p class="footer-copy">© 2025 SEE. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
