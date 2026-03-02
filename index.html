@@ -26,21 +26,21 @@
   <!-- ======== HEADER ======== -->
   <header class="header" id="header">
     <div class="header-inner">
-      <a href="#" class="header-logo">
+      <a href="#hero" class="header-logo" aria-label="SEE - الصفحة الرئيسية">
         <img src="assets/see-logo.svg" alt="SEE" />
       </a>
-      <nav class="header-nav">
+      <nav class="header-nav" aria-label="القائمة الرئيسية">
         <a href="#services" class="nav-link">الخدمات</a>
         <a href="#work" class="nav-link">أعمالنا</a>
         <a href="#process" class="nav-link">كيف نعمل</a>
         <a href="#clients" class="nav-link">عملاؤنا</a>
       </nav>
       <a href="#footer" class="header-cta">تواصل معنا</a>
-      <button class="burger" id="burger" aria-label="القائمة">
+      <button class="burger" id="burger" aria-label="فتح القائمة" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span>
       </button>
     </div>
-    <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="القائمة المتنقلة">
       <a href="#services" class="mobile-link">الخدمات</a>
       <a href="#work" class="mobile-link">أعمالنا</a>
       <a href="#process" class="mobile-link">كيف نعمل</a>
@@ -76,7 +76,7 @@
       <div class="hero-actions" data-hero="actions">
         <a href="#work" class="btn btn-primary">
           <span>استعرض أعمالنا</span>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         <a href="#footer" class="btn btn-ghost">ابدأ مشروعك</a>
       </div>
@@ -122,7 +122,7 @@
             <span>شعارات</span><span>ألوان</span><span>خطوط</span><span>دليل الهوية</span>
           </div>
           <div class="service-arrow">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
         </div>
         <div class="service-card" data-service="card">
@@ -132,7 +132,7 @@
           <h3>التسويق الرقمي</h3>
           <p>استراتيجيات تسويقية مدروسة تُوصل رسالتك للجمهور الصحيح في الوقت المناسب.</p>
           <div class="service-arrow">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
         </div>
         <div class="service-card" data-service="card">
@@ -142,7 +142,7 @@
           <h3>إدارة السوشيال ميديا</h3>
           <p>محتوى إبداعي ومنتظم يبني مجتمعاً حول علامتك ويحوّل المتابعين إلى عملاء.</p>
           <div class="service-arrow">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
         </div>
         <div class="service-card service-card--wide" data-service="card">
@@ -152,7 +152,7 @@
           <h3>تصميم المطبوعات</h3>
           <p>من البروشور إلى اللافتات الضخمة، نصمم مواد مطبوعة تلفت الأنظار وتُقنع.</p>
           <div class="service-arrow">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
         </div>
         <div class="service-card service-card--wide" data-service="card">
@@ -162,7 +162,7 @@
           <h3>تصميم المواقع والتطبيقات</h3>
           <p>واجهات رقمية جميلة وعملية تقدم تجربة مستخدم استثنائية تعكس احترافية علامتك.</p>
           <div class="service-arrow">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
         </div>
       </div>

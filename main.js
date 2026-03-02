@@ -122,6 +122,8 @@ let menuOpen = false;
 burger.addEventListener('click', () => {
   menuOpen = !menuOpen;
   mobileMenu.classList.toggle('open', menuOpen);
+  burger.setAttribute('aria-expanded', menuOpen ? 'true' : 'false');
+  burger.setAttribute('aria-label', menuOpen ? 'إغلاق القائمة' : 'فتح القائمة');
 
   gsap.to(burger.querySelectorAll('span')[0], {
     rotation: menuOpen ? 45 : 0,
@@ -139,6 +141,8 @@ mobileMenu.querySelectorAll('.mobile-link').forEach(link => {
   link.addEventListener('click', () => {
     menuOpen = false;
     mobileMenu.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+    burger.setAttribute('aria-label', 'فتح القائمة');
     gsap.to(burger.querySelectorAll('span')[0], { rotation: 0, y: 0, duration: 0.3 });
     gsap.to(burger.querySelectorAll('span')[1], { rotation: 0, y: 0, duration: 0.3 });
   });
@@ -267,31 +271,32 @@ gsap.fromTo('[data-service="card"]',
    BENTO GALLERY — Scrubbed
    ============================================ */
 const bentoGrid = document.getElementById('bentoGrid');
+const isMobile = window.innerWidth < 768;
 
 // Initial state
 gsap.set('.bento-item', { scale: 0.88, opacity: 0 });
-gsap.set(bentoGrid, { x: 120 });
+gsap.set(bentoGrid, { x: isMobile ? 40 : 120 });
 
 const bentTl = gsap.timeline({
   scrollTrigger: {
     trigger: '#bentoWrapper',
     start: 'top top',
     end: 'bottom bottom',
-    scrub: 1.5,
-    pin: '.bento-track',
+    scrub: isMobile ? 1 : 1.5,
+    pin: isMobile ? false : '.bento-track',
   }
 });
 
 bentTl
   .to(bentoGrid, {
-    x: () => -(bentoGrid.scrollWidth - window.innerWidth + 160),
+    x: () => -(bentoGrid.scrollWidth - window.innerWidth + (isMobile ? 80 : 160)),
     ease: 'none',
     duration: 1
   })
   .to('.bento-item', {
     scale: 1,
     opacity: 1,
-    stagger: { amount: 0.8, from: 'start' },
+    stagger: { amount: isMobile ? 0.4 : 0.8, from: 'start' },
     ease: 'seeEase',
     duration: 0.6
   }, 0);
@@ -336,14 +341,11 @@ processSteps.forEach((step, i) => {
    ============================================ */
 const logosTrack = document.getElementById('logosTrack');
 
-// Wait for layout then calculate
-ScrollTrigger.addEventListener('refresh', setupMarquee);
-setupMarquee();
-
 let marqueeTween;
 function setupMarquee() {
   if (marqueeTween) marqueeTween.kill();
   const trackWidth = logosTrack.scrollWidth / 2;
+  if (trackWidth <= 0) return;
   marqueeTween = gsap.to(logosTrack, {
     x: `-=${trackWidth}`,
     duration: 28,
@@ -354,6 +356,10 @@ function setupMarquee() {
     }
   });
 }
+
+// استدعاء واحد بعد اكتمال التخطيط
+ScrollTrigger.addEventListener('refresh', setupMarquee);
+ScrollTrigger.refresh();
 
 // Pause on hover - only affect marquee tween
 const marqueeWrapper = document.getElementById('logosMarquee');
