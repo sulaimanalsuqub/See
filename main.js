@@ -335,7 +335,7 @@ processSteps.forEach((step, i) => {
   gsap.fromTo(step,
     { opacity: 0, x: -40 },
     {
-      opacity: 0.3, x: 0, duration: 0.7, ease: 'seeEase',
+      opacity: 0.55, x: 0, duration: 0.7, ease: 'seeEase',
       scrollTrigger: { trigger: step, start: 'top 85%' }
     }
   );

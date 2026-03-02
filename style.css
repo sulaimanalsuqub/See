@@ -649,8 +649,8 @@ button { cursor: none; border: none; background: none; font-family: var(--font);
   grid-template-columns: 56px 1fr;
   gap: 32px;
   padding: 40px 0;
-  border-bottom: 1px solid var(--white-04);
-  opacity: 0.3;
+  border-bottom: 1px solid var(--white-08);
+  opacity: 0.55;
   transition: opacity 0.5s;
 }
 .process-step:last-child { border-bottom: none; }
