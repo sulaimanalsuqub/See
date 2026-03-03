@@ -255,13 +255,13 @@ button { cursor: none; border: none; background: none; font-family: var(--font);
   transition: background 0.4s, border-color 0.4s;
 }
 .header-logo { width: 100px; }
-.header-logo img { width: 100%; filter: invert(1); }
+.header-logo img { width: 100%; filter: none; }
 
 .header-nav { display: flex; gap: 36px; }
 .nav-link {
   font-size: 15px;
   font-weight: 500;
-  color: var(--white-50);
+  color: var(--text-secondary);
   transition: color 0.3s;
   position: relative;
 }
@@ -626,6 +626,7 @@ button { cursor: none; border: none; background: none; font-family: var(--font);
 .work {
   padding: 120px 0;
   overflow: hidden;
+  background: var(--bg-base);
 }
 .work .container { margin-bottom: 0; }
 
