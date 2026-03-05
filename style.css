@@ -40,7 +40,7 @@
   --white-08:    rgba(38,0,255,0.08);
   --white-04:    rgba(38,0,255,0.05);
 
-  --font:        'Rubik', sans-serif;
+  --font:        'Cairo', 'Rubik', sans-serif;
   --radius-sm:   8px;
   --radius-md:   16px;
   --radius-lg:   24px;
@@ -604,6 +604,7 @@ button { cursor: none; border: none; background: none; font-family: var(--font);
   transform: translateX(0);
   transition: opacity 0.3s, background 0.3s, box-shadow 0.3s, transform 0.3s var(--transition-spring);
 }
+.service-arrow { display: none; }
 .service-card:hover .service-arrow {
   opacity: 1;
   background: rgba(38,0,255,0.25);
@@ -624,6 +625,7 @@ button { cursor: none; border: none; background: none; font-family: var(--font);
   user-select: none;
   transition: opacity 0.4s;
 }
+.service-card::after { content: none; display: none; }
 .service-card:hover::after { opacity: 0.04; }
 
 /* ---------- WORK / BENTO ---------- */
@@ -1122,7 +1124,8 @@ body {
 .section-title {
   font-size: clamp(34px, 4.1vw, 56px);
   line-height: 1.18;
-  letter-spacing: -0.8px;
+  letter-spacing: 0;
+  font-weight: 800;
 }
 .section-desc {
   font-size: 16px;
@@ -1184,8 +1187,9 @@ body {
 .hero-title {
   font-size: clamp(44px, 7vw, 92px);
   line-height: 1.13;
-  letter-spacing: -1.8px;
+  letter-spacing: 0;
   margin-bottom: 26px;
+  font-weight: 900;
 }
 .hero-line--accent { gap: 14px; }
 .hero-sub {
@@ -1234,6 +1238,7 @@ body {
   transform: translateY(-5px);
 }
 .service-card h3 { font-size: 21px; margin-bottom: 10px; }
+.service-card h3 { font-weight: 800; }
 .service-card p { font-size: 15px; margin-bottom: 18px; }
 .service-tags span {
   background: rgba(24, 71, 242, 0.06);
@@ -1291,6 +1296,7 @@ body {
   background: rgba(24, 71, 242, 0.06);
 }
 .step-content h3 { font-size: 20px; margin-bottom: 10px; }
+.step-content h3 { font-weight: 800; }
 .step-content p { margin-bottom: 16px; }
 
 .logos-marquee-wrapper { margin-top: 30px; padding: 10px 0; }
@@ -1310,7 +1316,8 @@ body {
 .footer-cta::before { filter: blur(52px); opacity: 0.75; }
 .footer-cta-title {
   font-size: clamp(38px, 5.5vw, 76px);
-  letter-spacing: -1.2px;
+  letter-spacing: 0;
+  font-weight: 900;
 }
 .footer-bottom {
   padding-top: 36px;
@@ -1340,7 +1347,7 @@ body {
   .section-header { margin-bottom: 48px; }
   .services, .work, .process, .clients, .footer { padding: 84px 0; }
   .hero { min-height: auto; padding: 120px 20px 72px; }
-  .hero-title { letter-spacing: -0.6px; }
+  .hero-title { letter-spacing: 0; }
   .hero-stats {
     width: 100%;
     border-radius: 16px;
