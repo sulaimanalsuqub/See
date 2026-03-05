@@ -4,8 +4,8 @@
 
 gsap.registerPlugin(ScrollTrigger, CustomEase);
 
-CustomEase.create("seeEase", "M0,0 C0.25,0.46 0.45,0.94 1,1");
-CustomEase.create("seeSpring", "M0,0 C0.34,1.56 0.64,1 1,1");
+CustomEase.create("seeEase", "M0,0 C0.2,0.72 0.2,1 1,1");
+CustomEase.create("seeSpring", "M0,0 C0.18,1 0.3,1 1,1");
 CustomEase.create("seeIn", "M0,0 C0.55,0 1,0.45 1,1");
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -80,9 +80,9 @@ const loaderTl = gsap.timeline({
 });
 
 loaderTl
-  .to('.loader-logo', { opacity: 1, duration: 0.5, ease: 'seeEase' })
-  .to('#loaderFill', { width: '100%', duration: 1.2, ease: 'power2.inOut' }, '-=0.2')
-  .to('.loader-logo', { y: -10, duration: 0.3, ease: 'seeEase' }, '-=0.1');
+  .to('.loader-logo', { opacity: 1, duration: 0.45, ease: 'seeEase' })
+  .to('#loaderFill', { width: '100%', duration: 0.95, ease: 'power2.inOut' }, '-=0.1')
+  .to('.loader-logo', { y: -8, duration: 0.25, ease: 'seeEase' }, '-=0.1');
 
 /* ============================================
    HEADER — Directionally Aware
@@ -108,14 +108,14 @@ window.addEventListener('scroll', () => {
       if (scrollDirection === 'down' && currentScrollY > 200 && headerVisible) {
         gsap.to(header, {
           yPercent: -100,
-          duration: 0.5,
+          duration: 0.35,
           ease: 'seeEase',
           onComplete: () => { headerVisible = false; }
         });
       } else if (scrollDirection === 'up' && !headerVisible) {
         gsap.to(header, {
           yPercent: 0,
-          duration: 0.4,
+          duration: 0.3,
           ease: 'seeSpring',
           onStart: () => { headerVisible = true; }
         });
@@ -195,32 +195,32 @@ function initHeroAnimation() {
 
   heroTl
     .to('.hero-badge', {
-      opacity: 1, y: 0, duration: 0.7,
+      opacity: 1, y: 0, duration: 0.55,
       from: { y: 20, opacity: 0 }
     })
     .fromTo('[data-hero="line"]',
       { yPercent: 110, opacity: 0 },
-      { yPercent: 0, opacity: 1, duration: 0.9, stagger: 0.12, ease: 'seeSpring' },
-      '-=0.3'
+      { yPercent: 0, opacity: 1, duration: 0.7, stagger: 0.09, ease: 'seeSpring' },
+      '-=0.25'
     )
     .fromTo('.hero-sub',
       { y: 30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.7 },
-      '-=0.4'
+      { y: 0, opacity: 1, duration: 0.5 },
+      '-=0.32'
     )
     .fromTo('.hero-actions',
       { y: 20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.6 },
-      '-=0.4'
+      { y: 0, opacity: 1, duration: 0.45 },
+      '-=0.3'
     )
     .fromTo('.hero-stats',
       { y: 20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.6 },
-      '-=0.3'
+      { y: 0, opacity: 1, duration: 0.45 },
+      '-=0.24'
     )
     .fromTo('.hero-scroll-indicator',
       { opacity: 0 },
-      { opacity: 1, duration: 0.6 },
+      { opacity: 1, duration: 0.45 },
       '-=0.2'
     );
 
@@ -230,7 +230,7 @@ function initHeroAnimation() {
       const target = parseInt(el.dataset.count);
       gsap.to({ val: 0 }, {
         val: target,
-        duration: 2,
+        duration: 1.3,
         ease: 'power2.out',
         onUpdate: function() {
           el.textContent = Math.round(this.targets()[0].val);
@@ -241,21 +241,21 @@ function initHeroAnimation() {
 
   // Orb parallax
   gsap.to('.orb-1', {
-    y: -80, x: 40,
+    y: -45, x: 24,
+    scrollTrigger: {
+      trigger: '.hero',
+      start: 'top top',
+      end: 'bottom top',
+      scrub: 1.2
+    }
+  });
+  gsap.to('.orb-2', {
+    y: 36, x: -20,
     scrollTrigger: {
       trigger: '.hero',
       start: 'top top',
       end: 'bottom top',
       scrub: 1.5
-    }
-  });
-  gsap.to('.orb-2', {
-    y: 60, x: -30,
-    scrollTrigger: {
-      trigger: '.hero',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: 2
     }
   });
 }
@@ -293,11 +293,11 @@ document.querySelectorAll('[data-section="header"]').forEach(header => {
    SERVICES CARDS
    ============================================ */
 gsap.fromTo('[data-service="card"]',
-  { opacity: 0, y: 60, scale: 0.96 },
+  { opacity: 0, y: 36, scale: 0.98 },
   {
     opacity: 1, y: 0, scale: 1,
-    duration: 0.7,
-    stagger: { amount: 0.5, from: 'start' },
+    duration: 0.55,
+    stagger: { amount: 0.34, from: 'start' },
     ease: 'seeSpring',
     scrollTrigger: {
       trigger: '.services-grid',
@@ -313,31 +313,31 @@ const bentoGrid = document.getElementById('bentoGrid');
 const isMobile = window.innerWidth < 768;
 
 // Initial state
-gsap.set('.bento-item', { scale: 0.88, opacity: 0 });
-gsap.set(bentoGrid, { x: isMobile ? 40 : 120 });
+gsap.set('.bento-item', { scale: 0.94, opacity: 0 });
+gsap.set(bentoGrid, { x: isMobile ? 20 : 80 });
 
 const bentTl = gsap.timeline({
   scrollTrigger: {
     trigger: '#bentoWrapper',
     start: 'top top',
     end: 'bottom bottom',
-    scrub: isMobile ? 1 : 1.5,
+    scrub: isMobile ? 0.8 : 1.2,
     pin: isMobile ? false : '.bento-track',
   }
 });
 
 bentTl
   .to(bentoGrid, {
-    x: () => -(bentoGrid.scrollWidth - window.innerWidth + (isMobile ? 80 : 160)),
+    x: () => -(bentoGrid.scrollWidth - window.innerWidth + (isMobile ? 40 : 110)),
     ease: 'none',
     duration: 1
   })
   .to('.bento-item', {
     scale: 1,
     opacity: 1,
-    stagger: { amount: isMobile ? 0.4 : 0.8, from: 'start' },
+    stagger: { amount: isMobile ? 0.3 : 0.55, from: 'start' },
     ease: 'seeEase',
-    duration: 0.6
+    duration: 0.45
   }, 0);
 
 /* ============================================
@@ -387,7 +387,7 @@ function setupMarquee() {
   if (trackWidth <= 0) return;
   marqueeTween = gsap.to(logosTrack, {
     x: `-=${trackWidth}`,
-    duration: 28,
+    duration: 36,
     ease: 'none',
     repeat: -1,
     modifiers: {
