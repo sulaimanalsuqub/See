@@ -8,6 +8,9 @@ CustomEase.create("seeEase", "M0,0 C0.25,0.46 0.45,0.94 1,1");
 CustomEase.create("seeSpring", "M0,0 C0.34,1.56 0.64,1 1,1");
 CustomEase.create("seeIn", "M0,0 C0.55,0 1,0.45 1,1");
 
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const supportsFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
 /* ============================================
    CURSOR
    ============================================ */
@@ -17,45 +20,49 @@ const cursorFollower = document.getElementById('cursor-follower');
 let mouseX = -200, mouseY = -200;
 let followerX = -200, followerY = -200;
 
-// Start both cursors off-screen so they don't flash at (0,0)
-gsap.set(cursor, { x: -200, y: -200 });
-gsap.set(cursorFollower, { x: -200, y: -200 });
+if (cursor && cursorFollower && supportsFinePointer && !prefersReducedMotion) {
+  // Start both cursors off-screen so they don't flash at (0,0)
+  gsap.set(cursor, { x: -200, y: -200 });
+  gsap.set(cursorFollower, { x: -200, y: -200 });
 
-document.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
 
-  // Show cursors on first move
-  cursor.classList.add('cursor--visible');
-  cursorFollower.classList.add('cursor--visible');
+    // Show cursors on first move
+    cursor.classList.add('cursor--visible');
+    cursorFollower.classList.add('cursor--visible');
 
-  gsap.to(cursor, { x: mouseX, y: mouseY, duration: 0.05, ease: 'none' });
+    gsap.to(cursor, { x: mouseX, y: mouseY, duration: 0.05, ease: 'none' });
 
-  // Orb parallax (merged to avoid double listener)
-  const rx = (e.clientX / window.innerWidth - 0.5) * 30;
-  const ry = (e.clientY / window.innerHeight - 0.5) * 30;
-  gsap.to('.orb-1', { x: rx * 1.5, y: ry * 1.5, duration: 1.5, ease: 'seeEase', overwrite: 'auto' });
-  gsap.to('.orb-3', { x: -rx, y: -ry, duration: 2, ease: 'seeEase', overwrite: 'auto' });
-});
+    // Orb parallax (merged to avoid double listener)
+    const rx = (e.clientX / window.innerWidth - 0.5) * 30;
+    const ry = (e.clientY / window.innerHeight - 0.5) * 30;
+    gsap.to('.orb-1', { x: rx * 1.5, y: ry * 1.5, duration: 1.5, ease: 'seeEase', overwrite: 'auto' });
+    gsap.to('.orb-3', { x: -rx, y: -ry, duration: 2, ease: 'seeEase', overwrite: 'auto' });
+  });
 
-function animateFollower() {
-  followerX += (mouseX - followerX) * 0.1;
-  followerY += (mouseY - followerY) * 0.1;
-  gsap.set(cursorFollower, { x: followerX, y: followerY });
-  requestAnimationFrame(animateFollower);
+  function animateFollower() {
+    followerX += (mouseX - followerX) * 0.1;
+    followerY += (mouseY - followerY) * 0.1;
+    gsap.set(cursorFollower, { x: followerX, y: followerY });
+    requestAnimationFrame(animateFollower);
+  }
+  animateFollower();
+
+  document.querySelectorAll('a, button, .service-card, .bento-item, .logo-item').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.classList.add('cursor--hover');
+      cursorFollower.classList.add('cursor--hover');
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.classList.remove('cursor--hover');
+      cursorFollower.classList.remove('cursor--hover');
+    });
+  });
+} else {
+  document.body.classList.add('no-custom-cursor');
 }
-animateFollower();
-
-document.querySelectorAll('a, button, .service-card, .bento-item, .logo-item').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    cursor.classList.add('cursor--hover');
-    cursorFollower.classList.add('cursor--hover');
-  });
-  el.addEventListener('mouseleave', () => {
-    cursor.classList.remove('cursor--hover');
-    cursorFollower.classList.remove('cursor--hover');
-  });
-});
 
 /* ============================================
    LOADER
@@ -128,33 +135,56 @@ const burger = document.getElementById('burger');
 const mobileMenu = document.getElementById('mobileMenu');
 let menuOpen = false;
 
-burger.addEventListener('click', () => {
-  menuOpen = !menuOpen;
+const burgerSpans = burger ? burger.querySelectorAll('span') : [];
+
+function setMenuOpen(open) {
+  menuOpen = open;
   mobileMenu.classList.toggle('open', menuOpen);
   burger.setAttribute('aria-expanded', menuOpen ? 'true' : 'false');
   burger.setAttribute('aria-label', menuOpen ? 'إغلاق القائمة' : 'فتح القائمة');
+  document.body.classList.toggle('menu-open', menuOpen);
 
-  gsap.to(burger.querySelectorAll('span')[0], {
+  gsap.to(burgerSpans[0], {
     rotation: menuOpen ? 45 : 0,
     y: menuOpen ? 7.5 : 0,
     duration: 0.3, ease: 'seeEase'
   });
-  gsap.to(burger.querySelectorAll('span')[1], {
+  gsap.to(burgerSpans[1], {
     rotation: menuOpen ? -45 : 0,
     y: menuOpen ? -7.5 : 0,
     duration: 0.3, ease: 'seeEase'
   });
+}
+
+burger.addEventListener('click', () => {
+  setMenuOpen(!menuOpen);
 });
 
 mobileMenu.querySelectorAll('.mobile-link').forEach(link => {
   link.addEventListener('click', () => {
-    menuOpen = false;
-    mobileMenu.classList.remove('open');
-    burger.setAttribute('aria-expanded', 'false');
-    burger.setAttribute('aria-label', 'فتح القائمة');
-    gsap.to(burger.querySelectorAll('span')[0], { rotation: 0, y: 0, duration: 0.3 });
-    gsap.to(burger.querySelectorAll('span')[1], { rotation: 0, y: 0, duration: 0.3 });
+    setMenuOpen(false);
   });
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && menuOpen) {
+    setMenuOpen(false);
+  }
+});
+
+document.addEventListener('click', (event) => {
+  if (!menuOpen) return;
+  const clickedOutsideMenu = !mobileMenu.contains(event.target);
+  const clickedOutsideBurger = !burger.contains(event.target);
+  if (clickedOutsideMenu && clickedOutsideBurger) {
+    setMenuOpen(false);
+  }
+});
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768 && menuOpen) {
+    setMenuOpen(false);
+  }
 });
 
 /* ============================================
@@ -406,28 +436,23 @@ gsap.fromTo('[data-footer="bottom"]',
    ============================================ */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', (e) => {
-    e.preventDefault();
-    const target = document.querySelector(anchor.getAttribute('href'));
-    if (target) {
-      gsap.to(window, {
-        scrollTo: { y: target, offsetY: 80 },
-        duration: 1.2,
-        ease: 'seeEase'
-      });
+    const href = anchor.getAttribute('href');
+    if (!href) return;
+    if (href === '#') {
+      e.preventDefault();
+      return;
     }
+
+    let target = null;
+    try {
+      target = document.querySelector(href);
+    } catch (error) {
+      target = null;
+    }
+
+    if (!target) return;
+    e.preventDefault();
+    const top = target.getBoundingClientRect().top + window.scrollY - 80;
+    window.scrollTo({ top, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
   });
 });
-
-// ScrollTo plugin fallback (without plugin)
-if (!gsap.plugins.scrollTo) {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', (e) => {
-      e.preventDefault();
-      const target = document.querySelector(anchor.getAttribute('href'));
-      if (target) {
-        const top = target.getBoundingClientRect().top + window.scrollY - 80;
-        window.scrollTo({ top, behavior: 'smooth' });
-      }
-    });
-  });
-}

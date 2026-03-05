@@ -59,6 +59,10 @@ body {
   overflow-x: hidden;
   cursor: none;
 }
+body.menu-open { overflow: hidden; }
+body.no-custom-cursor { cursor: auto; }
+body.no-custom-cursor button,
+body.no-custom-cursor .btn { cursor: pointer; }
 
 a { text-decoration: none; color: inherit; }
 img { max-width: 100%; display: block; }
@@ -1059,4 +1063,20 @@ button { cursor: none; border: none; background: none; font-family: var(--font);
   .bento-scroll-wrapper { height: 280vh; }
   .service-card { padding: 28px; }
   .footer-cta-title { font-size: clamp(32px, 8vw, 48px); }
+}
+
+@media (hover: none), (pointer: coarse) {
+  body { cursor: auto; }
+  button, .btn { cursor: pointer; }
+  .cursor, .cursor-follower { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .cursor, .cursor-follower { display: none !important; }
 }
